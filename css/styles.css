@@ -4,6 +4,20 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  height: 100%;
+  background: #1b2a49;
+}
+
 body {
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#game-wrapper {
+  width: 800;
+  height: 600;
 }
