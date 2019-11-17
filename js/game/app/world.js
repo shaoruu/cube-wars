@@ -48,6 +48,27 @@ class World {
 
   getSpawnpoint = () => this.spawnpoint
 
+  getRandomSpawner = () => this.spawnerNodes[Math.floor(this.spawnerNodes.length * Math.random())]
+
+  getNeighborNodes = node => {
+    const neighbors = []
+
+    for (let i = -1; i <= 1; i++) {
+      for (let j = -1; j <= 1; j++) {
+        if (i === 0 && j === 0) continue
+
+        let checkR = node.r + i
+        let checkC = node.c + j
+
+        if (rcWithinBounds(checkR, checkC)) {
+          neighbors.push(this.getNodeFromRC(checkR, checkC))
+        }
+      }
+    }
+
+    return neighbors
+  }
+
   getNodeFromRC = (r, c) => {
     try {
       return this.nodes[r][c]

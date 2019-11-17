@@ -1,7 +1,7 @@
 class Player {
-  constructor(game) {
+  constructor(game, weaponSheet) {
     this.initMembers(game)
-    this.initTexture()
+    this.initTexture(weaponSheet)
     this.initListeners()
   }
 
@@ -25,16 +25,18 @@ class Player {
       y: 0
     }
 
-    this.rigidBody = Matter.Bodies.rectangle(0, 0, PLAYER_WIDTH, PLAYER_WIDTH, {
-      slop: 0,
-      inertia: 10000
+    this.rigidBody = Matter.Bodies.circle(0, 0, PLAYER_WIDTH / 2, {
+      // slop: 0,
+      friction: 1,
+      inertia: Infinity
     })
+    this.rigidBody.name = PLAYER_TAG
     Matter.World.add(game.physicsEngine.world, this.rigidBody)
-
-    this.graphics = new PIXI.Graphics()
   }
 
-  initTexture = () => {
+  initTexture = weaponSheet => {
+    this.graphics = new PIXI.Graphics()
+
     this.draw()
 
     this.sprite = new PIXI.Sprite(graphicsToTexture(this.graphics, this.game.getRenderer()))
@@ -42,6 +44,8 @@ class Player {
     this.sprite.anchor.set(0.5, 0.5)
 
     this.game.getStage().addChild(this.sprite)
+
+    this.weapons = new Weapons(this, weaponSheet)
   }
 
   initListeners = () => {
@@ -125,7 +129,7 @@ class Player {
 
   update = delta => {
     if (!this.isSetup) {
-      const spawnpoint = game.world.getSpawnpoint()
+      const spawnpoint = this.game.world.getSpawnpoint()
 
       this.globalPos = { x: spawnpoint.x, y: spawnpoint.y }
       this.windowPos = { x: gameDOM.offsetWidth / 2, y: gameDOM.offsetHeight / 2 }
@@ -135,15 +139,14 @@ class Player {
       this.isSetup = true
     }
 
-    const node = this.getCurrentNode()
-    console.log(node ? node.walkable : '')
-
     this.updateRC()
     this.updateMovements(delta)
 
     this.sprite.x = this.windowPos.x
     this.sprite.y = this.windowPos.y
     this.sprite.rotation = this.rigidBody.angle
+
+    this.weapons.update(this.movements)
 
     // Matter.Render.lookAt(this.game.physicsRenderer, {
     //   min: { x: this.globalPos.x - this.windowPos.x, y: this.globalPos.y - this.windowPos.y },

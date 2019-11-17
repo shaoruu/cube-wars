@@ -1,14 +1,14 @@
 class Game {
-  constructor() {
-    this.init()
+  constructor(weaponSheet) {
+    this.init(weaponSheet)
   }
 
-  init = () => {
-    this.initMembers()
+  init = weaponSheet => {
+    this.initMembers(weaponSheet)
     this.initApp()
   }
 
-  initMembers = () => {
+  initMembers = weaponSheet => {
     this.pixiApp = new PIXI.Application({
       autoResize: true,
       resolution: devicePixelRatio,
@@ -27,7 +27,8 @@ class Game {
     // })
 
     this.world = new World(this)
-    this.player = new Player(this)
+    this.player = new Player(this, weaponSheet)
+    this.zombieManager = new ZombieManager(this)
   }
 
   initApp = () => {
@@ -37,18 +38,30 @@ class Game {
     window.addEventListener('resize', this.resize)
     this.resize()
 
-    this.pixiApp.ticker.add(delta => {
-      this.world.update(delta)
-      this.player.update(delta)
-    })
+    this.pixiApp.ticker.add(this.update)
 
     this.physicsEngine.world.gravity.y = 0
     Matter.Engine.run(this.physicsEngine)
+
+    Matter.Events.on(this.physicsEngine, 'collisionStart', function(event) {
+      const { pairs } = event
+
+      for (let i = 0; i < pairs.length; i++) {
+        const { bodyA, bodyB } = pairs[i]
+        if (bodyA.name === PLAYER_TAG) {
+          console.log('YES')
+        }
+        if (bodyB.name === PLAYER_TAG) {
+          console.log('YES')
+        }
+      }
+    })
   }
 
-  update = () => {
-    this.world.update()
-    this.player.update()
+  update = delta => {
+    this.world.update(delta)
+    this.player.update(delta)
+    this.zombieManager.update(delta)
   }
 
   resize = () => {

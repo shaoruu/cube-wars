@@ -1,0 +1,87 @@
+{"frames": {
+
+"firearm_0.png":
+{
+	"frame": {"x":19,"y":62,"w":14,"h":11},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":8,"w":14,"h":11},
+	"sourceSize": {"w":29,"h":19},
+	"anchor": {"x":0.35,"y":0.8}
+},
+"firearm_1.png":
+{
+	"frame": {"x":1,"y":75,"w":14,"h":10},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":9,"w":14,"h":10},
+	"sourceSize": {"w":29,"h":19},
+	"anchor": {"x":0.35,"y":0.8}
+},
+"firearm_2.png":
+{
+	"frame": {"x":1,"y":49,"w":19,"h":11},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":8,"w":19,"h":11},
+	"sourceSize": {"w":29,"h":19},
+	"anchor": {"x":0.35,"y":0.8}
+},
+"firearm_3.png":
+{
+	"frame": {"x":1,"y":62,"w":16,"h":11},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":8,"w":16,"h":11},
+	"sourceSize": {"w":29,"h":19},
+	"anchor": {"x":0.35,"y":0.8}
+},
+"firearm_4.png":
+{
+	"frame": {"x":22,"y":33,"w":19,"h":8},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":11,"w":19,"h":8},
+	"sourceSize": {"w":29,"h":19},
+	"anchor": {"x":0.35,"y":0.8}
+},
+"firearm_5.png":
+{
+	"frame": {"x":1,"y":33,"w":19,"h":14},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":5,"w":19,"h":14},
+	"sourceSize": {"w":29,"h":19},
+	"anchor": {"x":0.35,"y":0.8}
+},
+"firearm_6.png":
+{
+	"frame": {"x":1,"y":12,"w":23,"h":19},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":6,"y":0,"w":23,"h":19},
+	"sourceSize": {"w":29,"h":19},
+	"anchor": {"x":0.35,"y":0.8}
+},
+"firearm_7.png":
+{
+	"frame": {"x":1,"y":1,"w":28,"h":9},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":10,"w":28,"h":9},
+	"sourceSize": {"w":29,"h":19},
+	"anchor": {"x":0.35,"y":0.8}
+}},
+"animations": {
+	"firearm": ["firearm_0.png","firearm_1.png","firearm_2.png","firearm_3.png","firearm_4.png","firearm_5.png","firearm_6.png","firearm_7.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "weapons.png",
+	"format": "RGBA8888",
+	"size": {"w":31,"h":86},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:d2b303a97f5c404613ee1d5a9d5391ca:339149f846c1b0239c395619b35d265b:ba48453f8b2235fdb166a51105f49255$"
+}
+}

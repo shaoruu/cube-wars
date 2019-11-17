@@ -1,0 +1,71 @@
+{
+  "frames": {
+    "Spider Sprite Sheet-6.png": {
+      "frame": { "x": 1, "y": 25, "w": 14, "h": 9 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 9, "y": 23, "w": 14, "h": 9 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "anchor": { "x": 0.5, "y": 1 }
+    },
+    "Spider Sprite Sheet-7.png": {
+      "frame": { "x": 1, "y": 1, "w": 15, "h": 10 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 9, "y": 22, "w": 15, "h": 10 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "anchor": { "x": 0.5, "y": 1 }
+    },
+    "Spider Sprite Sheet-8.png": {
+      "frame": { "x": 18, "y": 1, "w": 13, "h": 9 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 9, "y": 23, "w": 13, "h": 9 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "anchor": { "x": 0.5, "y": 1 }
+    },
+    "Spider Sprite Sheet-9.png": {
+      "frame": { "x": 18, "y": 12, "w": 12, "h": 10 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 9, "y": 22, "w": 12, "h": 10 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "anchor": { "x": 0.5, "y": 1 }
+    },
+    "Spider Sprite Sheet-10.png": {
+      "frame": { "x": 1, "y": 13, "w": 14, "h": 10 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 7, "y": 22, "w": 14, "h": 10 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "anchor": { "x": 0.5, "y": 1 }
+    },
+    "Spider Sprite Sheet-11.png": {
+      "frame": { "x": 17, "y": 24, "w": 14, "h": 9 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 9, "y": 23, "w": 14, "h": 9 },
+      "sourceSize": { "w": 32, "h": 32 },
+      "anchor": { "x": 0.5, "y": 1 }
+    }
+  },
+  "animations": {
+    "Spider Sprite Sheet": [
+      "Spider Sprite Sheet-6.png",
+      "Spider Sprite Sheet-7.png",
+      "Spider Sprite Sheet-8.png",
+      "Spider Sprite Sheet-9.png",
+      "Spider Sprite Sheet-10.png",
+      "Spider Sprite Sheet-11.png"
+    ]
+  },
+  "meta": {
+    "app": "https://www.codeandweb.com/texturepacker",
+    "version": "1.0",
+    "image": "fat_spider.png",
+    "format": "RGBA8888",
+    "size": { "w": 32, "h": 35 },
+    "scale": "1",
+    "smartupdate": "$TexturePacker:SmartUpdate:0938f56a275717ee80218b3807f73fb2:f5c2008f8a64c77d82f3afb166ec7e82:c6510b9044f23e10c52daa3c49827aa3$"
+  }
+}

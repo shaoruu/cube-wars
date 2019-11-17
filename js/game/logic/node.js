@@ -59,10 +59,10 @@ class Node {
   update = () => {}
 
   draw = graphics => {
+    if (this.walkable) graphics.lineStyle(0)
+    else graphics.lineStyle(2, TILE_OUTLINE_COLOR, 1)
     graphics.beginFill(this.color)
-
     graphics.drawRect(this.x, this.y, TILE_WIDTH, TILE_WIDTH)
-
     graphics.endFill()
   }
 
