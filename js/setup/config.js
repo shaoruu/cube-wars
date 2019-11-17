@@ -122,7 +122,7 @@ const GUNS_DATA = [
     bulletMass: 100,
     bulletColor: 0x003f5c,
     bulletRadius: 4,
-    bulletDamage: 2,
+    bulletDamage: 0.5,
     bulletDurability: 1,
     scoreThreshold: 130000
   },

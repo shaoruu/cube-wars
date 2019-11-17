@@ -122,16 +122,15 @@ body {
 }
 
 #instructions {
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  transform: translate(-50%, -50%);
+  /* position: absolute; */
+  /* left: 50%; */
+  /* bottom: 0; */
+  /* transform: translate(-50%, -50%); */
   text-align: center;
-  margin-bottom: 0;
   width: 100%;
   color: #99999983;
   font-size: 1.1vh;
-  margin-bottom: 2vh;
+  margin-top: 2vh;
 }
 
 #instructions span {
