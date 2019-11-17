@@ -16,3 +16,13 @@ function mapGlobalToPlayerVP(globalPos, player) {
     y: pWindowY + roomGDeltaYToPlayer
   }
 }
+
+function globalPosToGridPos(globalPos) {
+  const { x, y } = globalPos
+
+  return { c: globalCoordToGridCoord(x), r: globalCoordToGridCoord(y) }
+}
+
+function globalCoordToGridCoord(number) {
+  return Math.floor(number / TILE_WIDTH)
+}

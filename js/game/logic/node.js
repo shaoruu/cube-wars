@@ -3,12 +3,13 @@ class Node {
     this.initMembers(r, c)
     this.initState(state)
   }
+
   initMembers = (r, c) => {
     this.r = r
     this.c = c
 
-    this.x = this.c * TILE_WIDTH
-    this.y = this.r * TILE_WIDTH
+    this.x = (this.c + 0.5) * TILE_WIDTH
+    this.y = (this.r + 0.5) * TILE_WIDTH
 
     this.gCost = 0
     this.hCost = 0
@@ -21,6 +22,7 @@ class Node {
 
   initState = state => {
     this.color = GROUND_COLOR
+
     switch (state) {
       case WALL_STATE:
         this.walkable = false
@@ -38,6 +40,12 @@ class Node {
         this.isSpawnpoint = true
       default:
         break
+    }
+
+    if (!this.walkable) {
+      this.rigidBody = Matter.Bodies.rectangle(this.x, this.y, TILE_WIDTH, TILE_WIDTH, {
+        isStatic: true
+      })
     }
   }
 

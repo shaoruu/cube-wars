@@ -11,8 +11,20 @@ class Game {
   initMembers = () => {
     this.pixiApp = new PIXI.Application({
       autoResize: true,
-      resolution: devicePixelRatio
+      resolution: devicePixelRatio,
+      backgroundColor: WALL_COLOR
     })
+
+    this.physicsEngine = Matter.Engine.create()
+    // this.physicsRenderer = Matter.Render.create({
+    //   element: gameDOM,
+    //   engine: this.physicsEngine,
+    //   options: {
+    //     width: MAP_WIDTH,
+    //     height: MAP_HEIGHT,
+    //     showAngleIndicator: true
+    //   }
+    // })
 
     this.world = new World(this)
     this.player = new Player(this)
@@ -20,6 +32,7 @@ class Game {
 
   initApp = () => {
     gameDOM.appendChild(this.pixiApp.view)
+    // Matter.Render.run(this.physicsRenderer)
 
     window.addEventListener('resize', this.resize)
     this.resize()
@@ -28,6 +41,9 @@ class Game {
       this.world.update(delta)
       this.player.update(delta)
     })
+
+    this.physicsEngine.world.gravity.y = 0
+    Matter.Engine.run(this.physicsEngine)
   }
 
   update = () => {
