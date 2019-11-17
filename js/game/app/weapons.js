@@ -2,16 +2,21 @@ class Weapons {
   constructor(player, weaponSheet) {
     this.initMembers(player)
     this.initTextures(weaponSheet)
+    this.initListeners()
   }
 
   initMembers = player => {
     this.player = player
 
-    this.weaponIndex = 1
+    this.weaponIndex = 0
 
     this.maxWeaponCount = 1
 
     this.textures = []
+    this.bulletData = []
+    this.bullets = new Map()
+
+    this.lastFired = performance.now()
   }
 
   initTextures = weaponSheet => {
@@ -27,13 +32,29 @@ class Weapons {
     this.sprite.height = PLAYER_WEAPON_HEIGHT
 
     this.player.game.getStage().addChild(this.sprite)
+
+    this.processGunsData()
+  }
+
+  initListeners = () => {
+    this.shooter = keyboard(' ')
+    this.shooter.press = this.startFire
+    this.shooter.release = this.stopFire
   }
 
   update = movements => {
     this.sprite.x = this.player.sprite.x
     this.sprite.y = this.player.sprite.y
 
+    this.tryFire()
+
     this.aim(movements)
+
+    this.updateBullets()
+  }
+
+  updateBullets = () => {
+    this.bullets.forEach(b => b.update())
   }
 
   aim = movements => {
@@ -70,8 +91,76 @@ class Weapons {
     this.swapTexture()
   }
 
+  tryFire = () => {
+    if (!this.firing) return
+
+    const { cooldown } = this.bulletData[this.weaponIndex]
+    const now = performance.now()
+
+    if (now - this.lastFired > cooldown) {
+      this.lastFired = now
+
+      this.fire()
+    }
+  }
+
+  startFire = () => {
+    this.firing = true
+  }
+
+  stopFire = () => {
+    this.firing = false
+  }
+
+  fire = () => {
+    const id = this.bullets.size
+
+    const bulletDatum = this.bulletData[this.weaponIndex]
+    const newBullet = new Bullet(
+      id,
+      this.sprite.rotation,
+      this.player.globalPos.x,
+      this.player.globalPos.y,
+      this,
+      bulletDatum
+    )
+
+    this.bullets.set(id, newBullet)
+  }
+
   swapTexture = () => {
     this.sprite.texture = this.textures[this.weaponIndex]
+  }
+
+  processGunsData = () => {
+    for (let i = 0; i < WEAPON_COUNT; i++) {
+      const {
+        cooldown,
+        bulletForce,
+        bulletDamage,
+        bulletMass,
+        bulletColor,
+        bulletRadius,
+        bulletDurability
+      } = GUNS_DATA[i]
+
+      const graphics = new PIXI.Graphics()
+      graphics.beginFill(bulletColor)
+      graphics.drawCircle(0, 0, bulletRadius)
+      graphics.endFill()
+
+      const bulletDatum = {
+        cooldown,
+        mass: bulletMass,
+        force: bulletForce,
+        radius: bulletRadius,
+        damage: bulletDamage,
+        durability: bulletDurability,
+        texture: graphicsToTexture(graphics, this.player.game.getRenderer())
+      }
+
+      this.bulletData.push(bulletDatum)
+    }
   }
 
   upgrade = () => {

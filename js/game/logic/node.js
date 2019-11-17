@@ -46,6 +46,10 @@ class Node {
       this.rigidBody = Matter.Bodies.rectangle(this.x, this.y, TILE_WIDTH, TILE_WIDTH, {
         isStatic: true
       })
+
+      if (!this.isSpawner) {
+        this.rigidBody.isWall = true
+      }
     }
   }
 

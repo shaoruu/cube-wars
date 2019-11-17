@@ -16,6 +16,7 @@ const ZOMBIE_MAX_ACC = 1.3
 const ZOMBIE_MIN_ACC = 1
 const PLAYER_INERTIA = 0.4
 const ZOMBIE_INERTIA = 0.2
+const ZOMBIE_STUNNED_DELAY = 1000
 
 const ZOMBIE_MAX_HEALTH = 50
 
@@ -40,6 +41,92 @@ const PLAYER_COLOR = 0x00918e
 
 const ZOMBIE_OUTLINE_COLOR = 0x1f6650
 const ZOMBIE_COLOR = 0x6f9a8d
+
+/* -------------------------------------------------------------------------- */
+/*                                    GUNS                                    */
+/* -------------------------------------------------------------------------- */
+const GUNS_DATA = [
+  {
+    // ms
+    cooldown: 50,
+    bulletForce: 10,
+    bulletMass: 50,
+    bulletColor: 0xf89d13,
+    bulletRadius: 3,
+    bulletDamage: 10,
+    bulletDurability: 1
+  },
+  {
+    // ms
+    cooldown: 1000,
+    bulletForce: 5,
+    bulletMass: 50,
+    bulletColor: 0xf89d13,
+    bulletRadius: 1,
+    bulletDamage: 10,
+    bulletDurability: 1
+  },
+  {
+    // ms
+    cooldown: 1000,
+    bulletForce: 5,
+    bulletMass: 50,
+    bulletColor: 0xf89d13,
+    bulletRadius: 1,
+    bulletDamage: 10,
+    bulletDurability: 1
+  },
+  {
+    // ms
+    cooldown: 1000,
+    bulletForce: 5,
+    bulletMass: 50,
+    bulletColor: 0xf89d13,
+    bulletRadius: 1,
+    bulletDamage: 10,
+    bulletDurability: 1
+  },
+  {
+    // ms
+    cooldown: 1000,
+    bulletForce: 5,
+    bulletMass: 50,
+    bulletColor: 0xf89d13,
+    bulletRadius: 1,
+    bulletDamage: 10,
+    bulletDurability: 1
+  },
+  {
+    // ms
+    cooldown: 1000,
+    bulletForce: 5,
+    bulletMass: 50,
+    bulletColor: 0xf89d13,
+    bulletRadius: 1,
+    bulletDamage: 10,
+    bulletDurability: 1
+  },
+  {
+    // ms
+    cooldown: 1000,
+    bulletForce: 5,
+    bulletMass: 50,
+    bulletColor: 0xf89d13,
+    bulletRadius: 1,
+    bulletDamage: 10,
+    bulletDurability: 1
+  },
+  {
+    // ms
+    cooldown: 1000,
+    bulletForce: 5,
+    bulletMass: 50,
+    bulletColor: 0xf89d13,
+    bulletRadius: 1,
+    bulletDamage: 10,
+    bulletDurability: 1
+  }
+]
 
 /* -------------------------------------------------------------------------- */
 /*                                  GENERATED                                 */

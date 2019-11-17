@@ -10,15 +10,19 @@ class Zombie {
     this.x = x
     this.y = y
 
+    this.stunned = false
+
     this.velocity = { x: 0, y: 0 }
     this.acc = getRandomZombieAcc()
 
     this.rigidBody = Matter.Bodies.circle(0, 0, ZOMBIE_WIDTH / 2, {
       slop: 0,
-      friction: 1,
-      density: 10,
-      inertia: Infinity
+      friction: 1
+      // density: 10,
+      // inertia: Infinity
     })
+    this.rigidBody.isZombie = true
+    this.rigidBody.parentRef = this
     Matter.World.add(game.physicsEngine.world, this.rigidBody)
     Matter.Body.setPosition(this.rigidBody, this)
 
@@ -48,9 +52,14 @@ class Zombie {
 
     const { x, y } = nextNode
     const dir = { x: x - this.x, y: y - this.y }
-    const aBar = Math.sqrt(dir.x ** 2 + dir.y ** 2)
-    dir.x /= aBar
-    dir.y /= aBar
+    if (this.stunned) {
+      dir.x /= 100
+      dir.y /= 100
+    } else {
+      const aBar = Math.sqrt(dir.x ** 2 + dir.y ** 2)
+      dir.x /= aBar
+      dir.y /= aBar
+    }
 
     Matter.Body.setVelocity(this.rigidBody, {
       x: dir.x * delta * this.acc,
@@ -70,6 +79,7 @@ class Zombie {
 
   update = delta => {
     this.updateRC()
+
     this.updateMovements(delta)
 
     const { x: zx, y: zy } = mapGlobalToPlayerVP(this.rigidBody.position, this.game.player)
@@ -92,6 +102,20 @@ class Zombie {
     this.graphics.beginFill(ZOMBIE_COLOR)
     this.graphics.drawRect(0, 0, ZOMBIE_WIDTH, ZOMBIE_WIDTH)
     this.graphics.endFill()
+  }
+
+  knockback = bullet => {
+    const { damage, force, horzDelta, vertDelta } = bullet
+
+    this.stunned = true
+
+    Matter.Body.applyForce(
+      this.rigidBody,
+      { x: this.rigidBody.position.x, y: this.rigidBody.position.y },
+      { x: force * damage * horzDelta * 1000, y: force * damage * vertDelta * 1000 }
+    )
+
+    setTimeout(() => (this.stunned = false), ZOMBIE_STUNNED_DELAY)
   }
 
   damage = dmg => {

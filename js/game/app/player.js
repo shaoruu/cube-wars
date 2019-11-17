@@ -30,7 +30,8 @@ class Player {
       friction: 1,
       inertia: Infinity
     })
-    this.rigidBody.name = PLAYER_TAG
+    this.rigidBody.isPlayer = true
+    this.rigidBody.parentRef = this
     Matter.World.add(game.physicsEngine.world, this.rigidBody)
   }
 

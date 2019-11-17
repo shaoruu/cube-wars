@@ -48,11 +48,16 @@ class Game {
 
       for (let i = 0; i < pairs.length; i++) {
         const { bodyA, bodyB } = pairs[i]
-        if (bodyA.name === PLAYER_TAG) {
-          console.log('YES')
-        }
-        if (bodyB.name === PLAYER_TAG) {
-          console.log('YES')
+        if ((bodyA.isZombie && bodyB.isBullet) || (bodyA.isBullet && bodyB.isZombie)) {
+          let zombieRef = bodyA.isZombie ? bodyA.parentRef : bodyB.parentRef
+          let bulletRef = bodyA.isBullet ? bodyA.parentRef : bodyB.parentRef
+
+          zombieRef.knockback(bulletRef)
+          bulletRef.usedOnce()
+        } else if ((bodyA.isWall && bodyB.isBullet) || (bodyA.isBullet && bodyB.isWall)) {
+          let bulletRef = bodyA.isBullet ? bodyA.parentRef : bodyB.parentRef
+
+          bulletRef.destroy()
         }
       }
     })
