@@ -141,12 +141,13 @@ class Zombie {
 
     createjs.Tween.get(this.sprite)
       .to({ alpha: 0 }, ZOMBIE_DEATH_ANIMATION_DELAY)
-      .call(() => this.game.getStage().removeChild(this.sprite))
+      .call(() => {
+        this.game.getStage().removeChild(this.sprite)
+        this.game.zombieManager.setDead(this)
+      })
     Matter.Composite.remove(this.game.physicsEngine.world, this.rigidBody)
 
     this.game.player.killedZombie(this)
-
-    this.game.zombieManager.setDead(this)
   }
 
   revive = (x, y) => {

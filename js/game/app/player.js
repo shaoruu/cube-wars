@@ -73,14 +73,14 @@ class Player {
     const nextWeapon = keyboard('e')
     const prevWeapon = keyboard('q')
 
-    const kTutorial = keyboard('Escape')
-    const tutorial = keyboard('t')
+    const kGoal = keyboard('Escape')
+    const goal = keyboard('t')
 
     nextWeapon.release = () => this.weapons.next()
     prevWeapon.release = () => this.weapons.prev()
 
-    kTutorial.press = tutorial.press = () => activateGoalDOM()
-    kTutorial.release = tutorial.release = () => deactivateGoalDOM()
+    kGoal.press = goal.press = () => activateGoalDOM()
+    kGoal.release = goal.release = () => deactivateGoalDOM()
 
     kUp.press = up.press = () => (this.movements.up = true)
     kUp.release = up.release = () => (this.movements.up = false)

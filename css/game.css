@@ -17,6 +17,7 @@ body {
 }
 
 body {
+  position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -118,4 +119,24 @@ body {
   width: 80vw;
   height: 60vh;
   overflow: hidden;
+}
+
+#instructions {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  margin-bottom: 0;
+  width: 100%;
+  color: #99999983;
+  font-size: 1.1vh;
+  margin-bottom: 2vh;
+}
+
+#instructions span {
+  border-radius: 1vh;
+  background: #99999983;
+  color: #eeeeee;
+  padding: 0.5vh;
 }
