@@ -1,0 +1,114 @@
+@font-face {
+  font-family: 'IBM Plus';
+  src: url('../assets/IBM_font.ttf');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'IBM Plus';
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  background: #1b2a49;
+}
+
+body {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #eeeeee;
+
+  -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 2s; /* Firefox < 16 */
+  -ms-animation: fadein 2s; /* Internet Explorer */
+  -o-animation: fadein 2s; /* Opera < 12.1 */
+  animation: fadein 2s;
+}
+
+#title {
+  font-size: 4vh;
+  text-align: center;
+}
+
+#menu-wrapper {
+  color: #eeeeee;
+  font-size: 2vh;
+  margin-top: 1vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* text-decoration: none; */
+}
+
+#menu-wrapper a {
+  color: rgb(83, 83, 83);
+  font-size: 2.5vh;
+  margin-top: 1vh;
+  width: 25vh;
+  text-align: center;
+  padding: 1vh;
+  border-radius: 1vh;
+  background: #eeeeee;
+  transition: all 0.2s ease;
+}
+
+#menu-wrapper a:hover {
+  background: rgb(83, 83, 83);
+  color: #eeeeee;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -28,7 +28,7 @@ class World {
 
     this.position = { x: 0, y: 0 }
 
-    this.bloodTexture = PIXI.Texture.from('assets/blood.png')
+    this.bloodTexture = PIXI.Texture.from('../assets/blood.png')
     this.bloodSprites = new Map()
     this.lastBloodStain = performance.now()
 

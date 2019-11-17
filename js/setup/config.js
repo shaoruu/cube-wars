@@ -37,7 +37,7 @@ const BLOOD_STAIN_LIFETIME = 20000 // 20 seconds
 const BLOOD_FADE_DELAY = 500
 
 const REGEN_POD_INTERVAL = 5000
-const REGEN_POD_VALUE = 30
+const REGEN_POD_VALUE = 150
 
 const BLOOD_Z_ORDER = 100
 const PLAYER_Z_ORDER = 200
@@ -82,7 +82,7 @@ const GUNS_DATA = [
     cooldown: 100,
     bulletForce: 10,
     bulletMass: 50,
-    bulletColor: 0xf89d13,
+    bulletColor: 0xf1fa3c,
     bulletRadius: 3,
     bulletDamage: 10,
     bulletDurability: 1,

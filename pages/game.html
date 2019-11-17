@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <link
+      rel="icon"
+      href="http://zombierated.com/wp-content/uploads/2018/02/cropped-zombie-rated-logo-150x150.png"
+    />
+
+    <link rel="stylesheet" href="../css/game.css" />
+
+    <title>Game | Cube War</title>
+
+    <script src="https://code.createjs.com/1.0.0/tweenjs.min.js"></script>
+    <script src="../lib/keyboard.js"></script>
+    <script src="../lib/pixi.min.js"></script>
+    <script src="../lib/matter.min.js"></script>
+  </head>
+  <body>
+    <div id="title">Cube Wars</div>
+    <div id="game-wrapper">
+      <div id="score">Score: 0</div>
+      <div id="info">
+        <div id="level">Level: 0</div>
+        <div id="zombies-left">Zombies: 0</div>
+      </div>
+      <div id="weapon"></div>
+    </div>
+
+    <script src="../js/setup/domElements.js"></script>
+    <script src="../js/setup/config.js"></script>
+    <script src="../js/utils/helpers.js"></script>
+    <script src="../js/game/logic/node.js"></script>
+    <script src="../js/game/app/zombie.js"></script>
+    <script src="../js/game/logic/pathfinder.js"></script>
+    <script src="../js/game/app/bullet.js"></script>
+    <script src="../js/game/app/weapons.js"></script>
+    <script src="../js/game/app/regenPod.js"></script>
+    <script src="../js/game/managers/regenPodManager.js"></script>
+    <script src="../js/game/managers/zombieManager.js"></script>
+    <script src="../js/game/app/world.js"></script>
+    <script src="../js/game/app/player.js"></script>
+    <script src="../js/game/app/game.js"></script>
+    <script src="../js/main.js"></script>
+  </body>
+</html>

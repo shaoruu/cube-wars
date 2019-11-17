@@ -30,6 +30,7 @@ class Zombie {
     Matter.Body.setPosition(this.rigidBody, this)
 
     this.health = ZOMBIE_MAX_HEALTH
+    this.isAlive = true
 
     this.id = this.rigidBody.id
   }
@@ -119,7 +120,7 @@ class Zombie {
       { x: force * damage * horzDelta * 1000, y: force * damage * vertDelta * 1000 }
     )
 
-    this.damage(force)
+    this.damage(damage)
 
     setTimeout(() => (this.stunned = false), ZOMBIE_STUNNED_DELAY)
   }
@@ -136,15 +137,30 @@ class Zombie {
   }
 
   kill = () => {
+    this.isAlive = false
+
     createjs.Tween.get(this.sprite)
       .to({ alpha: 0 }, ZOMBIE_DEATH_ANIMATION_DELAY)
       .call(() => this.game.getStage().removeChild(this.sprite))
     Matter.Composite.remove(this.game.physicsEngine.world, this.rigidBody)
 
     this.game.player.killedZombie(this)
+
+    this.game.zombieManager.setDead(this)
   }
 
-  revive = () => {
+  revive = (x, y) => {
+    this.isAlive = true
+
+    this.x = x
+    this.y = y
+
+    this.acc = getRandomZombieAcc()
+    this.lastDealtDamage = performance.now()
+
+    Matter.Body.setPosition(this.rigidBody, this)
+
+    this.sprite.alpha = 1
     this.game.getStage().addChild(this.sprite)
     Matter.World.add(this.game.physicsEngine.world, this.rigidBody)
   }

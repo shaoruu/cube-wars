@@ -41,6 +41,29 @@ body {
   font-size: 2vh;
 }
 
+#info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #eeeeee;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+#level {
+  background-color: #110133;
+  padding: 1vh;
+  font-size: 2vh;
+}
+
+#zombies-left {
+  background-color: #110133;
+  padding: 1vh;
+  font-size: 2vh;
+}
+
 #weapon {
   position: absolute;
   bottom: 0;

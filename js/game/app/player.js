@@ -221,6 +221,7 @@ class Player {
 
     if (this.health <= 0) {
       this.health = 0
+      window.location.href = 'gameover.html'
     }
   }
 

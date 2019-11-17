@@ -85,3 +85,11 @@ function setScoreDOM(score) {
 function setWeaponDOM(name) {
   weaponDOM.innerHTML = name
 }
+
+function setLvlDOM(lvl) {
+  lvlDOM.innerHTML = `Level: ${lvl}`
+}
+
+function setZBDOM(count) {
+  zbLeftDOM.innerHTML = `Zombies: ${count}`
+}
