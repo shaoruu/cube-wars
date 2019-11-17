@@ -93,3 +93,11 @@ function setLvlDOM(lvl) {
 function setZBDOM(count) {
   zbLeftDOM.innerHTML = `Zombies: ${count}`
 }
+
+function activateGoalDOM() {
+  goalsDOM.style.top = '50%'
+}
+
+function deactivateGoalDOM() {
+  goalsDOM.style.top = '-50%'
+}
