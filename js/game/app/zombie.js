@@ -115,6 +115,8 @@ class Zombie {
       { x: force * damage * horzDelta * 1000, y: force * damage * vertDelta * 1000 }
     )
 
+    this.damage(force)
+
     setTimeout(() => (this.stunned = false), ZOMBIE_STUNNED_DELAY)
   }
 
@@ -128,10 +130,14 @@ class Zombie {
   }
 
   kill = () => {
+    createjs.Tween.get(this.sprite)
+      .to({ alpha: 0 }, ZOMBIE_DEATH_ANIMATION_DELAY)
+      .call(() => this.game.getStage().removeChild(this.sprite))
     Matter.Composite.remove(this.game.physicsEngine.world, this.rigidBody)
   }
 
   revive = () => {
+    this.game.getStage().addChild(this.sprite)
     Matter.World.add(this.game.physicsEngine.world, this.rigidBody)
   }
 }
