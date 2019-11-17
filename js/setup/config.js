@@ -33,7 +33,7 @@ const ZOMBIE_REGULAR_DAMAGE = 20
 // const ZOMBIE_REGULAR_DAMAGE = 0
 const ZOMBIE_REGULAR_ATTACK_COOLDOWN = 1000
 
-const BLOOD_STAIN_INTERVAL = 50 // ms
+const BLOOD_STAIN_INTERVAL = 0 // ms
 const BLOOD_STAIN_LIFETIME = 20000 // 20 seconds
 const BLOOD_FADE_DELAY = 500
 
@@ -81,10 +81,10 @@ const GUNS_DATA = [
     name: 'Regular Pistol',
     // ms
     cooldown: 500,
-    bulletForce: 8,
+    bulletForce: 10,
     bulletMass: 50,
     bulletColor: 0x444444,
-    bulletRadius: 2,
+    bulletRadius: 4,
     bulletDamage: 40,
     // bulletDamage: 1000,
     bulletDurability: 1,
@@ -94,13 +94,13 @@ const GUNS_DATA = [
     name: 'Handy Handgun',
     // ms
     cooldown: 500,
-    bulletForce: 5,
+    bulletForce: 15,
     bulletMass: 50,
     bulletColor: 0x333333,
-    bulletRadius: 2,
+    bulletRadius: 4,
     bulletDamage: 20,
     bulletDurability: 2,
-    scoreThreshold: 30000
+    scoreThreshold: 20000
   },
   {
     name: '50 cal Sniper Rifle',
@@ -109,31 +109,31 @@ const GUNS_DATA = [
     bulletForce: 15,
     bulletMass: 50,
     bulletColor: 0x222222,
-    bulletRadius: 2,
+    bulletRadius: 4,
     bulletDamage: 40,
     bulletDurability: 5,
-    scoreThreshold: 90000
+    scoreThreshold: 60000
   },
   {
     name: 'Radioactive Laser-Mock',
     // ms
     cooldown: 50,
-    bulletForce: 5,
+    bulletForce: 20,
     bulletMass: 100,
     bulletColor: 0x003f5c,
-    bulletRadius: 2,
+    bulletRadius: 4,
     bulletDamage: 2,
     bulletDurability: 1,
-    scoreThreshold: 150000
+    scoreThreshold: 130000
   },
   {
     name: 'Dripping L85',
     // ms
     cooldown: 500,
-    bulletForce: 5,
+    bulletForce: 15,
     bulletMass: 50,
     bulletColor: 0x85ef47,
-    bulletRadius: 3,
+    bulletRadius: 4,
     bulletDamage: 50,
     bulletDurability: 1,
     scoreThreshold: 240000
@@ -142,10 +142,10 @@ const GUNS_DATA = [
     name: 'Lightning Uzi',
     // ms
     cooldown: 100,
-    bulletForce: 10,
+    bulletForce: 15,
     bulletMass: 50,
     bulletColor: 0xf1fa3c,
-    bulletRadius: 3,
+    bulletRadius: 5,
     bulletDamage: 8,
     // bulletDamage: 1000,
     bulletDurability: 2,
@@ -155,10 +155,10 @@ const GUNS_DATA = [
     name: 'Mini Cannon Gun',
     // ms
     cooldown: 1000,
-    bulletForce: 20,
+    bulletForce: 10,
     bulletMass: 500,
     bulletColor: 0xf89d13,
-    bulletRadius: 8,
+    bulletRadius: 10,
     bulletDamage: 40,
     // bulletDamage: 1000,
     bulletDurability: 5,

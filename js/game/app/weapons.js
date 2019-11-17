@@ -191,7 +191,7 @@ class Weapons {
     const body = table.createTBody()
 
     for (let i = 0; i < GUNS_DATA.length; i++) {
-      const currRow = body.insertRow(0)
+      const currRow = body.insertRow(i)
       const currCell1 = currRow.insertCell(0)
       const currCell2 = currRow.insertCell(1)
 
