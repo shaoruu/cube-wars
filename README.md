@@ -1,1 +1,1 @@
-# zombies
+# Cube Wars
