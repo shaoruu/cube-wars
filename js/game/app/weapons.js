@@ -7,7 +7,7 @@ class Weapons {
   initMembers = player => {
     this.player = player
 
-    this.weaponIndex = 0
+    this.weaponIndex = 1
 
     this.maxWeaponCount = 1
 
@@ -16,14 +16,15 @@ class Weapons {
 
   initTextures = weaponSheet => {
     for (let i = 0; i < WEAPON_COUNT; i++) {
-      const texture = weaponSheet[`firearm_${i}.png`]
+      const texture = weaponSheet.spritesheet.textures[`firearm_${i}.png`]
       this.textures.push(texture)
     }
 
     this.sprite = new PIXI.Sprite(this.textures[this.weaponIndex])
+    this.sprite.anchor.set(0.35, 0.8)
     this.sprite.zOrder = 100
-    this.sprite.width = 1000
-    this.sprite.height = 1000
+    this.sprite.width = PLAYER_WEAPON_WIDTH
+    this.sprite.height = PLAYER_WEAPON_HEIGHT
 
     this.player.game.getStage().addChild(this.sprite)
   }
@@ -37,6 +38,11 @@ class Weapons {
 
   aim = movements => {
     const { up, down, left, right } = movements
+
+    if (!up && !down && !left && !right) return
+
+    if (left) this.sprite.scale.y = -Math.abs(this.sprite.scale.y)
+    if (right) this.sprite.scale.y = Math.abs(this.sprite.scale.y)
 
     let angle = 0
     if (down && right) angle = Math.PI / 4
