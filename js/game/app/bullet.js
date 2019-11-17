@@ -38,6 +38,7 @@ class Bullet {
     this.sprite.anchor.set(0.5, 0.5)
     this.sprite.width = radius * 2
     this.sprite.height = radius * 2
+    this.sprite.zIndex = BULLET_Z_ORDER
 
     this.wc.player.game.getStage().addChild(this.sprite)
   }

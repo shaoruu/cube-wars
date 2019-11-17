@@ -27,9 +27,10 @@ class Weapons {
 
     this.sprite = new PIXI.Sprite(this.textures[this.weaponIndex])
     this.sprite.anchor.set(0.35, 0.8)
-    this.sprite.zOrder = 100
+    this.sprite.zIndex = 100
     this.sprite.width = PLAYER_WEAPON_WIDTH
     this.sprite.height = PLAYER_WEAPON_HEIGHT
+    this.sprite.zIndex = PLAYER_WEAPON_Z_ORDER
 
     this.player.game.getStage().addChild(this.sprite)
 

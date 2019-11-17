@@ -39,6 +39,7 @@ class Game {
     this.resize()
 
     this.pixiApp.ticker.add(this.update)
+    this.getStage().sortableChildren = true
 
     this.physicsEngine.world.gravity.y = 0
     Matter.Engine.run(this.physicsEngine)

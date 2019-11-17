@@ -43,6 +43,7 @@ class Player {
     this.sprite = new PIXI.Sprite(graphicsToTexture(this.graphics, this.game.getRenderer()))
     this.sprite.pivot.set(0.5, 0.5)
     this.sprite.anchor.set(0.5, 0.5)
+    this.sprite.zIndex = PLAYER_Z_ORDER
 
     this.game.getStage().addChild(this.sprite)
 

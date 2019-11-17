@@ -39,6 +39,7 @@ class Zombie {
     this.sprite = new PIXI.Sprite(graphicsToTexture(this.graphics, this.game.getRenderer()))
     this.sprite.pivot.set(0.5, 0.5)
     this.sprite.anchor.set(0.5, 0.5)
+    this.sprite.zIndex = ZOMBIE_Z_ORDER
 
     this.game.getStage().addChild(this.sprite)
   }
@@ -122,6 +123,8 @@ class Zombie {
 
   damage = dmg => {
     this.health -= dmg
+
+    this.game.world.markBlood(this)
 
     if (this.health < 0) {
       // DO THE ANIMATION HERE
