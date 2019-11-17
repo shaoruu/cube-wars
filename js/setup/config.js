@@ -26,7 +26,7 @@ const ZOMBIE_STUNNED_DELAY = 1000
 const ZOMBIE_MAX_HEALTH = 50
 const PLAYER_MAX_HEALTH = 200
 
-const ZOMBIE_BASE_COUNT = 15
+const ZOMBIE_BASE_COUNT = 5
 const ZOMBIE_INCR_COUNT = 4
 const ZOMBIE_DEATH_ANIMATION_DELAY = 250 // ms
 const ZOMBIE_REGULAR_DAMAGE = 20
@@ -36,7 +36,7 @@ const BLOOD_STAIN_INTERVAL = 100 // ms
 const BLOOD_STAIN_LIFETIME = 20000 // 20 seconds
 const BLOOD_FADE_DELAY = 500
 
-const REGEN_POD_INTERVAL = 5000
+const REGEN_POD_INTERVAL = 100000
 const REGEN_POD_VALUE = 150
 
 const BLOOD_Z_ORDER = 100
@@ -79,98 +79,101 @@ const GUNS_DATA = [
   {
     name: 'Regular Pistol',
     // ms
+    cooldown: 500,
+    bulletForce: 8,
+    bulletMass: 50,
+    bulletColor: 0x444444,
+    bulletRadius: 2,
+    bulletDamage: 40,
+    // bulletDamage: 1000,
+    bulletDurability: 1,
+    scoreThreshold: 0
+  },
+  {
+    name: 'Handy Handgun',
+    // ms
+    cooldown: 500,
+    bulletForce: 5,
+    bulletMass: 50,
+    bulletColor: 0x333333,
+    bulletRadius: 2,
+    bulletDamage: 20,
+    bulletDurability: 2,
+    scoreThreshold: 30000
+  },
+  {
+    name: '50 cal Sniper Rifle',
+    // ms
+    cooldown: 1100,
+    bulletForce: 15,
+    bulletMass: 50,
+    bulletColor: 0x222222,
+    bulletRadius: 2,
+    bulletDamage: 40,
+    bulletDurability: 5,
+    scoreThreshold: 90000
+  },
+  {
+    name: 'Radioactive Laser-Mock',
+    // ms
+    cooldown: 50,
+    bulletForce: 5,
+    bulletMass: 100,
+    bulletColor: 0x003f5c,
+    bulletRadius: 2,
+    bulletDamage: 2,
+    bulletDurability: 1,
+    scoreThreshold: 150000
+  },
+  {
+    name: 'Dripping L85',
+    // ms
+    cooldown: 500,
+    bulletForce: 5,
+    bulletMass: 50,
+    bulletColor: 0x85ef47,
+    bulletRadius: 3,
+    bulletDamage: 50,
+    bulletDurability: 1,
+    scoreThreshold: 240000
+  },
+  {
+    name: 'Lightning Uzi',
+    // ms
     cooldown: 100,
     bulletForce: 10,
     bulletMass: 50,
     bulletColor: 0xf1fa3c,
     bulletRadius: 3,
-    bulletDamage: 10,
-    bulletDurability: 1,
-    scoreThreshold: 0
+    bulletDamage: 8,
+    // bulletDamage: 1000,
+    bulletDurability: 2,
+    scoreThreshold: 350000
   },
   {
-    name: 'Regular Pistol',
+    name: 'Mini Cannon Gun',
     // ms
     cooldown: 1000,
-    bulletForce: 5,
-    bulletMass: 50,
+    bulletForce: 20,
+    bulletMass: 500,
     bulletColor: 0xf89d13,
-    bulletRadius: 1,
-    bulletDamage: 10,
-    bulletDurability: 1,
-    scoreThreshold: 0
+    bulletRadius: 8,
+    bulletDamage: 40,
+    // bulletDamage: 1000,
+    bulletDurability: 5,
+    scoreThreshold: 500000
   },
   {
-    name: 'Regular Pistol',
+    name: "Shrek's Rocket Gun",
     // ms
-    cooldown: 1000,
+    cooldown: 1500,
     bulletForce: 5,
     bulletMass: 50,
-    bulletColor: 0xf89d13,
-    bulletRadius: 1,
+    bulletColor: 0xa8ff3e,
+    bulletRadius: 15,
     bulletDamage: 10,
     bulletDurability: 1,
-    scoreThreshold: 0
-  },
-  {
-    name: 'Regular Pistol',
-    // ms
-    cooldown: 1000,
-    bulletForce: 5,
-    bulletMass: 50,
-    bulletColor: 0xf89d13,
-    bulletRadius: 1,
-    bulletDamage: 10,
-    bulletDurability: 1,
-    scoreThreshold: 0
-  },
-  {
-    name: 'Regular Pistol',
-    // ms
-    cooldown: 1000,
-    bulletForce: 5,
-    bulletMass: 50,
-    bulletColor: 0xf89d13,
-    bulletRadius: 1,
-    bulletDamage: 10,
-    bulletDurability: 1,
-    scoreThreshold: 0
-  },
-  {
-    name: 'Regular Pistol',
-    // ms
-    cooldown: 1000,
-    bulletForce: 5,
-    bulletMass: 50,
-    bulletColor: 0xf89d13,
-    bulletRadius: 1,
-    bulletDamage: 10,
-    bulletDurability: 1,
-    scoreThreshold: 0
-  },
-  {
-    name: 'Regular Pistol',
-    // ms
-    cooldown: 1000,
-    bulletForce: 5,
-    bulletMass: 50,
-    bulletColor: 0xf89d13,
-    bulletRadius: 1,
-    bulletDamage: 10,
-    bulletDurability: 1,
-    scoreThreshold: 0
-  },
-  {
-    name: 'Regular Pistol',
-    // ms
-    cooldown: 1000,
-    bulletForce: 5,
-    bulletMass: 50,
-    bulletColor: 0xf89d13,
-    bulletRadius: 1,
-    bulletDamage: 10,
-    bulletDurability: 1,
-    scoreThreshold: 0
+    scoreThreshold: 800000
   }
 ]
 

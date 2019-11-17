@@ -81,16 +81,18 @@ class Weapons {
 
   next = () => {
     this.weaponIndex++
-    this.weaponIndex %= WEAPON_COUNT
+    this.weaponIndex %= this.maxWeaponCount
 
     this.swapTexture()
+    this.updateDOMWeaponName()
   }
 
   prev = () => {
     this.weaponIndex--
-    this.weaponIndex %= WEAPON_COUNT
+    if (this.weaponIndex < 0) this.weaponIndex = this.maxWeaponCount - 1
 
     this.swapTexture()
+    this.updateDOMWeaponName()
   }
 
   tryFire = () => {
@@ -148,7 +150,8 @@ class Weapons {
         bulletMass,
         bulletColor,
         bulletRadius,
-        bulletDurability
+        bulletDurability,
+        scoreThreshold
       } = GUNS_DATA[i]
 
       const graphics = new PIXI.Graphics()
@@ -164,10 +167,22 @@ class Weapons {
         radius: bulletRadius,
         damage: bulletDamage,
         durability: bulletDurability,
+        threshold: scoreThreshold,
         texture: graphicsToTexture(graphics, this.player.game.getRenderer())
       }
 
       this.bulletData.push(bulletDatum)
+    }
+  }
+
+  checkForUpgrade = () => {
+    if (this.maxWeaponCount === WEAPON_COUNT) return
+
+    const nextWeaponData = this.bulletData[this.maxWeaponCount]
+
+    if (this.player.score >= nextWeaponData.threshold) {
+      console.log('damn upgrade')
+      this.upgrade()
     }
   }
 

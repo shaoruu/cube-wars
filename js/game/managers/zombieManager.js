@@ -43,12 +43,10 @@ class ZombieManager {
     this.level++
 
     const count = getZombieCount(this.level)
-    console.log(count)
 
     this.zombies.forEach(zombie => {
       const { x, y } = this.game.world.getRandomSpawner()
       zombie.revive(x, y)
-      this.zombieCount++
     })
 
     for (let i = this.zombies.size; i < count; i++) {
@@ -56,9 +54,9 @@ class ZombieManager {
       const newZombie = new Zombie(this.game, x, y)
 
       this.zombies.set(newZombie.id, newZombie)
-
-      this.zombieCount++
     }
+
+    this.zombieCount = count
 
     this.updateZBDOM()
     this.updateLvlDOM()

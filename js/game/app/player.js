@@ -70,6 +70,12 @@ class Player {
     const right = keyboard('ArrowRight')
     const kRight = keyboard('d')
 
+    const nextWeapon = keyboard('e')
+    const prevWeapon = keyboard('q')
+
+    nextWeapon.release = () => this.weapons.next()
+    prevWeapon.release = () => this.weapons.prev()
+
     kUp.press = up.press = () => (this.movements.up = true)
     kUp.release = up.release = () => (this.movements.up = false)
 
@@ -207,7 +213,13 @@ class Player {
       )
 
       setScoreDOM(this.score)
+
+      this.checkScoreForWeapons()
     }
+  }
+
+  checkScoreForWeapons = () => {
+    this.weapons.checkForUpgrade()
   }
 
   damage = zombie => {
