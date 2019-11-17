@@ -36,6 +36,7 @@ class Weapons {
 
     this.processGunsData()
     this.updateDOMWeaponName()
+    this.generateGoalsDOM()
   }
 
   initListeners = () => {
@@ -173,6 +174,32 @@ class Weapons {
 
       this.bulletData.push(bulletDatum)
     }
+  }
+
+  generateGoalsDOM = () => {
+    const table = document.createElement('table')
+    table.id = 'goals-table'
+
+    const header = table.createTHead()
+    const headerRow = header.insertRow(0)
+    const header1 = headerRow.insertCell(0)
+    const header2 = headerRow.insertCell(1)
+
+    header1.innerHTML = 'Weapon'
+    header2.innerHTML = 'Score'
+
+    const body = table.createTBody()
+
+    for (let i = 0; i < GUNS_DATA.length; i++) {
+      const currRow = body.insertRow(0)
+      const currCell1 = currRow.insertCell(0)
+      const currCell2 = currRow.insertCell(1)
+
+      currCell1.innerHTML = GUNS_DATA[i].name
+      currCell2.innerHTML = GUNS_DATA[i].scoreThreshold
+    }
+
+    goalsDOM.appendChild(table)
   }
 
   checkForUpgrade = () => {
