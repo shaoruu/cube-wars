@@ -77,3 +77,11 @@ function isDiagonallyTrapped(world, node, neighbor) {
 function getRandomZombieAcc() {
   return ZOMBIE_MIN_ACC + Math.random(ZOMBIE_MAX_ACC - ZOMBIE_MIN_ACC)
 }
+
+function setScoreDOM(score) {
+  scoreDOM.innerHTML = `Score: ${score}`
+}
+
+function setWeaponDOM(name) {
+  weaponDOM.innerHTML = name
+}

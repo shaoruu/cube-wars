@@ -11,6 +11,9 @@ class Zombie {
     this.y = y
 
     this.stunned = false
+    this.isRegular = true
+
+    this.lastDealtDamage = performance.now()
 
     this.velocity = { x: 0, y: 0 }
     this.acc = getRandomZombieAcc()
@@ -137,10 +140,21 @@ class Zombie {
       .to({ alpha: 0 }, ZOMBIE_DEATH_ANIMATION_DELAY)
       .call(() => this.game.getStage().removeChild(this.sprite))
     Matter.Composite.remove(this.game.physicsEngine.world, this.rigidBody)
+
+    this.game.player.killedZombie(this)
   }
 
   revive = () => {
     this.game.getStage().addChild(this.sprite)
     Matter.World.add(this.game.physicsEngine.world, this.rigidBody)
+  }
+
+  get canDoDamage() {
+    const now = performance.now()
+    if (now - this.lastDealtDamage > ZOMBIE_REGULAR_ATTACK_COOLDOWN) {
+      this.lastDealtDamage = now
+      return true
+    }
+    return false
   }
 }

@@ -10,6 +10,7 @@ class World {
 
     this.nodes = []
     this.spawnerNodes = []
+    this.groundNodes = []
     for (let i = 0; i < DIMENSION; i++) {
       const newNodeArray = []
       for (let j = 0; j < DIMENSION; j++) {
@@ -20,6 +21,7 @@ class World {
         else if (newNode.isSpawnpoint) this.spawnpoint = newNode
 
         if (newNode.rigidBody) Matter.World.add(game.physicsEngine.world, newNode.rigidBody)
+        else this.groundNodes.push(newNode)
       }
       this.nodes.push(newNodeArray)
     }
@@ -36,7 +38,7 @@ class World {
     this.game.getStage().addChild(this.sprite)
   }
 
-  update = delta => {
+  update = () => {
     const { x, y } = mapGlobalToPlayerVP(this.position, this.game.player)
 
     this.sprite.x = x
@@ -71,7 +73,7 @@ class World {
       newBloodSprite.rotation = Math.random() * (2 * Math.PI)
       newBloodSprite.zIndex = BLOOD_Z_ORDER
 
-      const id = this.bloodSprites.size
+      const id = now
       this.bloodSprites.set(id, {
         sprite: newBloodSprite,
         position: {
@@ -98,6 +100,8 @@ class World {
   getSpawnpoint = () => this.spawnpoint
 
   getRandomSpawner = () => this.spawnerNodes[Math.floor(this.spawnerNodes.length * Math.random())]
+
+  getRandomGround = () => this.groundNodes[Math.floor(this.groundNodes.length * Math.random())]
 
   getNeighborNodes = node => {
     const neighbors = []

@@ -35,6 +35,7 @@ class Weapons {
     this.player.game.getStage().addChild(this.sprite)
 
     this.processGunsData()
+    this.updateDOMWeaponName()
   }
 
   initListeners = () => {
@@ -133,9 +134,14 @@ class Weapons {
     this.sprite.texture = this.textures[this.weaponIndex]
   }
 
+  updateDOMWeaponName = () => {
+    setWeaponDOM(this.bulletData[this.weaponIndex].name)
+  }
+
   processGunsData = () => {
     for (let i = 0; i < WEAPON_COUNT; i++) {
       const {
+        name,
         cooldown,
         bulletForce,
         bulletDamage,
@@ -151,6 +157,7 @@ class Weapons {
       graphics.endFill()
 
       const bulletDatum = {
+        name,
         cooldown,
         mass: bulletMass,
         force: bulletForce,
