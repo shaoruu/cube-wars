@@ -118,7 +118,7 @@ class Weapons {
   }
 
   fire = () => {
-    const id = this.bullets.size
+    const id = performance.now()
 
     const bulletDatum = this.bulletData[this.weaponIndex]
     const newBullet = new Bullet(

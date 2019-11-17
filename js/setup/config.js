@@ -68,7 +68,7 @@ const PLAYER_OUTLINE_COLOR = 0x4dd599
 const PLAYER_COLOR = 0x00918e
 
 const SCORE_RANGE = [0.8, 1]
-const REGULAR_ZOMBIE_KILL_SCORE = 8000
+const REGULAR_ZOMBIE_KILL_SCORE = 5000
 
 const ZOMBIE_OUTLINE_COLOR = 0x1f6650
 const ZOMBIE_COLOR = 0x6f9a8d
@@ -173,7 +173,7 @@ const GUNS_DATA = [
     bulletColor: 0xa8ff3e,
     bulletRadius: 15,
     bulletDamage: 10,
-    bulletDurability: 1,
+    bulletDurability: 8,
     scoreThreshold: 800000
   }
 ]
