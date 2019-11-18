@@ -13,8 +13,6 @@ class RegenPod {
     this.x = x
     this.y = y
 
-    console.log(this.x, this.y)
-
     this.graphics = new PIXI.Graphics()
 
     this.rigidBody = Matter.Bodies.rectangle(0, 0, REGEN_POD_WIDTH, REGEN_POD_WIDTH, {
@@ -29,7 +27,9 @@ class RegenPod {
   initTexture = () => {
     this.draw()
 
-    this.sprite = new PIXI.Sprite(graphicsToTexture(this.graphics, this.world.game.getRenderer()))
+    this.sprite = new PIXI.Sprite(
+      graphicsToTexture(this.graphics, this.world.game.getRenderer())
+    )
     this.sprite.pivot.set(0.5, 0.5)
     this.sprite.anchor.set(0.5, 0.5)
     this.sprite.width = REGEN_POD_WIDTH

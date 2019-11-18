@@ -155,7 +155,9 @@ class Weapons {
   }
 
   refill = () => {
-    this.bulletData[this.weaponIndex].ammo = this.bulletData[this.weaponIndex].maxAmmo
+    this.bulletData[this.weaponIndex].ammo = isGodMode()
+      ? 99999
+      : this.bulletData[this.weaponIndex].maxAmmo
   }
 
   swapTexture = () => {
@@ -192,7 +194,7 @@ class Weapons {
 
       let alteredDamage = isGodMode() ? 10000 : bulletDamage
       let alteredDurability = isGodMode() ? 10000 : bulletDurability
-      let alteredAmmoCount = isGodMode() ? 999999 : ammo
+      let alteredAmmoCount = isGodMode() ? 99999 : ammo
 
       const bulletDatum = {
         name,
@@ -244,7 +246,6 @@ class Weapons {
     const nextWeaponData = this.bulletData[this.maxWeaponCount]
 
     if (this.player.score >= nextWeaponData.threshold) {
-      console.log('damn upgrade')
       this.upgrade()
     }
   }
