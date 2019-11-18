@@ -1,5 +1,12 @@
 class Bullet {
-  constructor(id, rotation, x, y, wcRef, { force, texture, radius, damage, durability, mass }) {
+  constructor(
+    id,
+    rotation,
+    x,
+    y,
+    wcRef,
+    { force, texture, radius, damage, durability, mass }
+  ) {
     this.initMembers(id, rotation, x, y, force, radius, damage, mass, durability, wcRef)
     this.initTexture(texture, radius)
     this.initBullet()
@@ -52,6 +59,8 @@ class Bullet {
         y: this.force * this.vertDelta
       }
     )
+
+    setTimeout(this.destroy, MAX_BULLET_LIFETIME)
   }
 
   update = () => {

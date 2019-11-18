@@ -47,7 +47,9 @@ class Player {
     this.draw()
     this.drawHealthbar()
 
-    this.sprite = new PIXI.Sprite(graphicsToTexture(this.graphics, this.game.getRenderer()))
+    this.sprite = new PIXI.Sprite(
+      graphicsToTexture(this.graphics, this.game.getRenderer())
+    )
     this.sprite.pivot.set(0.5, 0.5)
     this.sprite.anchor.set(0.5, 0.5)
     this.sprite.zIndex = PLAYER_Z_ORDER
@@ -185,7 +187,8 @@ class Player {
   }
 
   updateHealthbar = () => {
-    this.healthbarContainer.inner.width = (HEALTH_BAR_MAX_WIDTH * this.health) / PLAYER_MAX_HEALTH
+    this.healthbarContainer.inner.width =
+      (HEALTH_BAR_MAX_WIDTH * this.health) / PLAYER_MAX_HEALTH
   }
 
   draw = () => {
@@ -229,6 +232,8 @@ class Player {
   }
 
   damage = zombie => {
+    if (isGodMode()) return
+
     let dmg
     if (zombie.isRegular) dmg = ZOMBIE_REGULAR_DAMAGE
     else dmg = 10000000
@@ -248,6 +253,7 @@ class Player {
     if (this.health > PLAYER_MAX_HEALTH) this.health = PLAYER_MAX_HEALTH
 
     this.updateHealthbar()
+    this.weapons.refill()
 
     regenPod.destroy()
   }

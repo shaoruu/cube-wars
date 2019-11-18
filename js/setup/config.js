@@ -23,6 +23,9 @@ const PLAYER_INERTIA = 0.4
 const ZOMBIE_INERTIA = 0.2
 const ZOMBIE_STUNNED_DELAY = 1000
 
+const AMMO_COUNT_FONT_SIZE = 10
+const AMMO_COUNT_SPRITE_OFFSET = 24
+
 const ZOMBIE_MAX_HEALTH = 50
 const PLAYER_MAX_HEALTH = 200
 
@@ -44,6 +47,7 @@ const BLOOD_FADE_DELAY = 500
 const REGEN_POD_INTERVAL = 10000
 const REGEN_POD_VALUE = 150
 const NOTIF_INTERVAL = 3000
+const MAX_BULLET_LIFETIME = 10000
 
 const BLOOD_Z_ORDER = 100
 const PLAYER_Z_ORDER = 200
@@ -68,6 +72,7 @@ const HEALTH_BAR_COLOR = 0xa8ff3e
 const HEALTH_BAR_BACKGROUND_COLOR = 0xff4949
 const HEALTH_BAR_OUTLINE_COLOR = 0x333333
 const REGEN_POD_COLOR = 0xc70d3a
+const AMMO_COUNT_FONT_COLOR = 0x444444
 
 const PLAYER_OUTLINE_COLOR = 0x4dd599
 const PLAYER_COLOR = 0x00918e
@@ -85,6 +90,7 @@ const GUNS_DATA = [
   {
     name: 'Regular Pistol',
     // ms
+    ammo: 20,
     cooldown: 300,
     bulletForce: 10,
     bulletMass: 50,
@@ -98,6 +104,7 @@ const GUNS_DATA = [
   {
     name: 'Handy Handgun',
     // ms
+    ammo: 20,
     cooldown: 300,
     bulletForce: 15,
     bulletMass: 50,
@@ -110,6 +117,7 @@ const GUNS_DATA = [
   {
     name: '50 cal Sniper Rifle',
     // ms
+    ammo: 25,
     cooldown: 800,
     bulletForce: 15,
     bulletMass: 50,
@@ -122,18 +130,20 @@ const GUNS_DATA = [
   {
     name: 'Radioactive Laser-Mock',
     // ms
+    ammo: 400,
     cooldown: 50,
     bulletForce: 20,
     bulletMass: 100,
     bulletColor: 0x003f5c,
     bulletRadius: 4,
-    bulletDamage: 0.5,
+    bulletDamage: 0.1,
     bulletDurability: 1,
     scoreThreshold: 130000
   },
   {
     name: 'Dripping L85',
     // ms
+    ammo: 200,
     cooldown: 500,
     bulletForce: 15,
     bulletMass: 50,
@@ -146,12 +156,13 @@ const GUNS_DATA = [
   {
     name: 'Lightning Uzi',
     // ms
+    ammo: 400,
     cooldown: 100,
     bulletForce: 15,
     bulletMass: 50,
     bulletColor: 0xf1fa3c,
     bulletRadius: 5,
-    bulletDamage: 8,
+    bulletDamage: 0.5,
     // bulletDamage: 1000,
     bulletDurability: 2,
     scoreThreshold: 350000
@@ -159,6 +170,7 @@ const GUNS_DATA = [
   {
     name: 'Mini Cannon Gun',
     // ms
+    ammo: 10,
     cooldown: 1000,
     bulletForce: 10,
     bulletMass: 500,
@@ -172,6 +184,7 @@ const GUNS_DATA = [
   {
     name: "Shrek's Rocket Gun",
     // ms
+    ammo: 8,
     cooldown: 1500,
     bulletForce: 5,
     bulletMass: 50,

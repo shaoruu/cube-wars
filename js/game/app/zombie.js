@@ -18,7 +18,7 @@ class Zombie {
     this.velocity = { x: 0, y: 0 }
     this.acc = getRandomZombieAcc()
 
-    this.rigidBody = Matter.Bodies.circle(0, 0, ZOMBIE_WIDTH / 2, {
+    this.rigidBody = Matter.Bodies.circle(0, 0, (ZOMBIE_WIDTH * 3) / 4, {
       slop: 0,
       friction: 1
       // density: 10,
@@ -40,7 +40,9 @@ class Zombie {
 
     this.draw()
 
-    this.sprite = new PIXI.Sprite(graphicsToTexture(this.graphics, this.game.getRenderer()))
+    this.sprite = new PIXI.Sprite(
+      graphicsToTexture(this.graphics, this.game.getRenderer())
+    )
     this.sprite.pivot.set(0.5, 0.5)
     this.sprite.anchor.set(0.5, 0.5)
     this.sprite.zIndex = ZOMBIE_Z_ORDER
@@ -87,7 +89,10 @@ class Zombie {
 
     this.updateMovements(delta)
 
-    const { x: zx, y: zy } = mapGlobalToPlayerVP(this.rigidBody.position, this.game.player)
+    const { x: zx, y: zy } = mapGlobalToPlayerVP(
+      this.rigidBody.position,
+      this.game.player
+    )
 
     this.sprite.x = zx
     this.sprite.y = zy

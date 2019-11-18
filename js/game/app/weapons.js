@@ -27,14 +27,25 @@ class Weapons {
 
     this.sprite = new PIXI.Sprite(this.textures[this.weaponIndex])
     this.sprite.anchor.set(0.35, 0.8)
-    this.sprite.zIndex = 100
     this.sprite.width = PLAYER_WEAPON_WIDTH
     this.sprite.height = PLAYER_WEAPON_HEIGHT
     this.sprite.zIndex = PLAYER_WEAPON_Z_ORDER
 
+    this.ammoCountSprite = new PIXI.Text('', {
+      fontFamily: 'IBM Plus',
+      fontSize: AMMO_COUNT_FONT_SIZE,
+      fill: AMMO_COUNT_FONT_COLOR,
+      align: 'center'
+    })
+    this.ammoCountSprite.zIndex = PLAYER_WEAPON_Z_ORDER
+    this.ammoCountSprite.anchor.set(0.5, 0.5)
+
     this.player.game.getStage().addChild(this.sprite)
+    this.player.game.getStage().addChild(this.ammoCountSprite)
 
     this.processGunsData()
+
+    this.updateAmmoText()
     this.updateDOMWeaponName()
     this.generateGoalsDOM()
   }
@@ -48,6 +59,9 @@ class Weapons {
   update = movements => {
     this.sprite.x = this.player.sprite.x
     this.sprite.y = this.player.sprite.y
+
+    this.ammoCountSprite.x = this.player.sprite.x
+    this.ammoCountSprite.y = this.player.sprite.y - AMMO_COUNT_SPRITE_OFFSET
 
     this.tryFire()
 
@@ -85,6 +99,7 @@ class Weapons {
     this.weaponIndex %= this.maxWeaponCount
 
     this.swapTexture()
+    this.updateAmmoText()
     this.updateDOMWeaponName()
   }
 
@@ -93,6 +108,7 @@ class Weapons {
     if (this.weaponIndex < 0) this.weaponIndex = this.maxWeaponCount - 1
 
     this.swapTexture()
+    this.updateAmmoText()
     this.updateDOMWeaponName()
   }
 
@@ -118,6 +134,11 @@ class Weapons {
   }
 
   fire = () => {
+    if (this.bulletData[this.weaponIndex].ammo <= 0) return
+    this.bulletData[this.weaponIndex].ammo--
+
+    this.updateAmmoText()
+
     const id = performance.now()
 
     const bulletDatum = this.bulletData[this.weaponIndex]
@@ -133,8 +154,16 @@ class Weapons {
     this.bullets.set(id, newBullet)
   }
 
+  refill = () => {
+    this.bulletData[this.weaponIndex].ammo = this.bulletData[this.weaponIndex].maxAmmo
+  }
+
   swapTexture = () => {
     this.sprite.texture = this.textures[this.weaponIndex]
+  }
+
+  updateAmmoText = () => {
+    this.ammoCountSprite.text = this.bulletData[this.weaponIndex].ammo
   }
 
   updateDOMWeaponName = () => {
@@ -145,6 +174,7 @@ class Weapons {
     for (let i = 0; i < WEAPON_COUNT; i++) {
       const {
         name,
+        ammo,
         cooldown,
         bulletForce,
         bulletDamage,
@@ -162,14 +192,17 @@ class Weapons {
 
       let alteredDamage = isGodMode() ? 10000 : bulletDamage
       let alteredDurability = isGodMode() ? 10000 : bulletDurability
+      let alteredAmmoCount = isGodMode() ? 999999 : ammo
 
       const bulletDatum = {
         name,
         cooldown,
+        maxAmmo: ammo,
         mass: bulletMass,
         force: bulletForce,
         radius: bulletRadius,
         damage: alteredDamage,
+        ammo: alteredAmmoCount,
         durability: alteredDurability,
         threshold: scoreThreshold,
         texture: graphicsToTexture(graphics, this.player.game.getRenderer())
