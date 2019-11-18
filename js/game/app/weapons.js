@@ -158,6 +158,7 @@ class Weapons {
     this.bulletData[this.weaponIndex].ammo = isGodMode()
       ? 99999
       : this.bulletData[this.weaponIndex].maxAmmo
+    this.updateAmmoText()
   }
 
   swapTexture = () => {

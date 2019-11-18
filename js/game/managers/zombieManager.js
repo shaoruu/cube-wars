@@ -64,11 +64,12 @@ class ZombieManager {
     this.updateLvlDOM()
   }
 
-  setDead = () => {
+  setDead = zombie => {
     this.zombieCount--
     this.updateZBDOM()
 
     if (this.zombieCount <= 0) {
+      this.game.regenPodManager.genPod(zombie.x, zombie.y)
       this.setupLevel()
     }
   }
