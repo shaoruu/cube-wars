@@ -135,7 +135,7 @@ class Zombie {
 
     this.game.world.markBlood(this)
 
-    if (this.health < 0) {
+    if (this.health <= 0) {
       // DO THE ANIMATION HERE
       this.kill()
     }

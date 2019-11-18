@@ -130,12 +130,12 @@ const GUNS_DATA = [
   {
     name: 'Radioactive Laser-Mock',
     // ms
-    ammo: 400,
+    ammo: 100,
     cooldown: 50,
     bulletForce: 20,
     bulletMass: 100,
     bulletColor: 0x003f5c,
-    bulletRadius: 4,
+    bulletRadius: 2,
     bulletDamage: 0.1,
     bulletDurability: 1,
     scoreThreshold: 130000
@@ -156,7 +156,7 @@ const GUNS_DATA = [
   {
     name: 'Lightning Uzi',
     // ms
-    ammo: 400,
+    ammo: 200,
     cooldown: 100,
     bulletForce: 15,
     bulletMass: 50,
