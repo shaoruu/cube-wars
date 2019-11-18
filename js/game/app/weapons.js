@@ -10,7 +10,7 @@ class Weapons {
 
     this.weaponIndex = 0
 
-    this.maxWeaponCount = 1
+    this.maxWeaponCount = isGodMode() ? WEAPON_COUNT : 1
 
     this.textures = []
     this.bulletData = []
