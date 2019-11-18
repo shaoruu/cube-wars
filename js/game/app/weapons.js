@@ -160,14 +160,17 @@ class Weapons {
       graphics.drawCircle(0, 0, bulletRadius)
       graphics.endFill()
 
+      let alteredDamage = isGodMode() ? 10000 : bulletDamage
+      let alteredDurability = isGodMode() ? 10000 : bulletDurability
+
       const bulletDatum = {
         name,
         cooldown,
         mass: bulletMass,
         force: bulletForce,
         radius: bulletRadius,
-        damage: bulletDamage,
-        durability: bulletDurability,
+        damage: alteredDamage,
+        durability: alteredDurability,
         threshold: scoreThreshold,
         texture: graphicsToTexture(graphics, this.player.game.getRenderer())
       }

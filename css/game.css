@@ -136,12 +136,13 @@ body {
 #notification {
   position: absolute;
   z-index: 20;
-  bottom: 0;
-  left: 0;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
   margin: 1vh;
   color: #eeeeee;
   background-color: #66666683;
-  font-size: 2vh;
+  font-size: 1vh;
   padding: 1vh;
   border-radius: 1vh;
 }

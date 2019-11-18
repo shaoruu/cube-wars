@@ -85,7 +85,7 @@ const GUNS_DATA = [
   {
     name: 'Regular Pistol',
     // ms
-    cooldown: 500,
+    cooldown: 300,
     bulletForce: 10,
     bulletMass: 50,
     bulletColor: 0x444444,
@@ -98,7 +98,7 @@ const GUNS_DATA = [
   {
     name: 'Handy Handgun',
     // ms
-    cooldown: 500,
+    cooldown: 300,
     bulletForce: 15,
     bulletMass: 50,
     bulletColor: 0x333333,
@@ -110,7 +110,7 @@ const GUNS_DATA = [
   {
     name: '50 cal Sniper Rifle',
     // ms
-    cooldown: 1100,
+    cooldown: 800,
     bulletForce: 15,
     bulletMass: 50,
     bulletColor: 0x222222,
@@ -192,6 +192,9 @@ const MAP_HEIGHT = DIMENSION * TILE_WIDTH
 const EASY = 'EASY'
 const REGULAR = 'REGULAR'
 const HARD = 'HARD'
+
+const OFF = 'OFF'
+const ON = 'ON'
 
 // prettier-ignore
 const DEFAULT_SMALL_MAP= [

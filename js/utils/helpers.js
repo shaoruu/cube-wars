@@ -122,3 +122,9 @@ function getDifficulty() {
   const difficulty = localStorage.getItem('gamemode')
   return difficulty || EASY
 }
+
+function isGodMode() {
+  const godMode = localStorage.getItem('god-mode')
+  if (godMode) return godMode === ON
+  return false
+}
