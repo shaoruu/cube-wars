@@ -28,7 +28,23 @@ function globalCoordToGridCoord(number) {
 }
 
 function getZombieCount(level) {
-  return (level - 1) * ZOMBIE_INCR_COUNT + ZOMBIE_BASE_COUNT
+  let base, incr
+  switch (getDifficulty()) {
+    case EASY:
+      base = ZOMBIE_EASY_BASE_COUNT
+      incr = ZOMBIE_EASY_INCR_COUNT
+      break
+    case REGULAR:
+      base = ZOMBIE_REGULAR_BASE_COUNT
+      incr = ZOMBIE_REGULAR_INCR_COUNT
+      break
+    case HARD:
+      base = ZOMBIE_HARD_BASE_COUNT
+      incr = ZOMBIE_HARD_INCR_COUNT
+      break
+  }
+
+  return (level - 1) * incr + base
 }
 
 function equalNodes(node1, node2) {
@@ -100,4 +116,9 @@ function activateGoalDOM() {
 
 function deactivateGoalDOM() {
   goalsDOM.style.top = '-50%'
+}
+
+function getDifficulty() {
+  const difficulty = localStorage.getItem('gamemode')
+  return difficulty || EASY
 }
