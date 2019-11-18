@@ -220,7 +220,7 @@ class Weapons {
     this.maxWeaponCount++
 
     this.player.game.notificationManager.addNotif(
-      `Obtained ${GUNS_DATA[this.maxWeaponCount].name}`
+      `Obtained ${GUNS_DATA[this.maxWeaponCount - 1].name}`
     )
   }
 }
