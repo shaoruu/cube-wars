@@ -40,6 +40,8 @@ class ZombieManager {
   }
 
   setupLevel = () => {
+    this.game.notificationManager.addNotif('Level up!')
+
     this.level++
 
     const count = getZombieCount(this.level)

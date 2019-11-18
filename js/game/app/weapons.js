@@ -215,5 +215,9 @@ class Weapons {
 
   upgrade = () => {
     this.maxWeaponCount++
+
+    this.player.game.notificationManager.addNotif(
+      `Obtained ${GUNS_DATA[this.maxWeaponCount].name}`
+    )
   }
 }

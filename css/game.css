@@ -133,6 +133,19 @@ body {
   margin-top: 2vh;
 }
 
+#notification {
+  position: absolute;
+  z-index: 20;
+  bottom: 0;
+  left: 0;
+  margin: 1vh;
+  color: #eeeeee;
+  background-color: #66666683;
+  font-size: 2vh;
+  padding: 1vh;
+  border-radius: 1vh;
+}
+
 #instructions span {
   border-radius: 1vh;
   background: #99999983;

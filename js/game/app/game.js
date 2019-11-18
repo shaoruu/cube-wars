@@ -28,6 +28,7 @@ class Game {
 
     this.world = new World(this)
     this.player = new Player(this, weaponSheet)
+    this.notificationManager = new NotificationManager()
     this.zombieManager = new ZombieManager(this)
     this.regenPodManager = new RegenPodManager(this)
   }
@@ -55,12 +56,18 @@ class Game {
           let playerRef = bodyA.isPlayer ? bodyA.parentRef : bodyB.parentRef
 
           playerRef.damage(zombieRef)
-        } else if ((bodyA.isRegenPod && bodyB.isPlayer) || (bodyA.isPlayer && bodyB.isRegenPod)) {
+        } else if (
+          (bodyA.isRegenPod && bodyB.isPlayer) ||
+          (bodyA.isPlayer && bodyB.isRegenPod)
+        ) {
           let regenPodRef = bodyA.isRegenPod ? bodyA.parentRef : bodyB.parentRef
           let playerRef = bodyA.isPlayer ? bodyA.parentRef : bodyB.parentRef
 
           playerRef.regenerate(regenPodRef)
-        } else if ((bodyA.isZombie && bodyB.isBullet) || (bodyA.isBullet && bodyB.isZombie)) {
+        } else if (
+          (bodyA.isZombie && bodyB.isBullet) ||
+          (bodyA.isBullet && bodyB.isZombie)
+        ) {
           let zombieRef = bodyA.isZombie ? bodyA.parentRef : bodyB.parentRef
           let bulletRef = bodyA.isBullet ? bodyA.parentRef : bodyB.parentRef
 
@@ -94,6 +101,7 @@ class Game {
     this.player.update(delta)
     this.zombieManager.update(delta)
     this.regenPodManager.update()
+    this.notificationManager.update()
   }
 
   resize = () => {
